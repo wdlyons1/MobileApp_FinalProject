@@ -2,25 +2,37 @@ package com.example.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-import android.os.Handler;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 public class SplashScreen extends AppCompatActivity {
 
+    Animation animation;
+    ImageView logo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        new Handler().postDelayed(new Runnable() {
+        logo =(ImageView)findViewById(R.id.imageView2);
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animation1);
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
 
             @Override
-            public void run() {
+            public void onAnimationEnd(Animation animation) {
+                startActivity(new Intent(SplashScreen.this,MainActivity.class));
 
-                Intent i = new Intent(SplashScreen.this, MainActivity.class);
-                startActivity(i);
-
-                finish();
             }
-        }, 3000);
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+        });
+        logo.startAnimation(animation);
     }
 }
+

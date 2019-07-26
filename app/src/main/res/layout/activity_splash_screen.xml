@@ -14,5 +14,5 @@
         android:layout_weight="1"
         android:layout_gravity="center"
         android:contentDescription="Money symbol"
-        app:srcCompat="@drawable/splash_logo" />
+       app:srcCompat="@drawable/splash_logo" />
 </LinearLayout>
